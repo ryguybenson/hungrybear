@@ -68,9 +68,15 @@ describe('HungryBear', function() {
     expect(fuzzy.completedPlane()).toEqual(true);
   });
   it('should test the food is going down by correct amount', function() {
-    fuzzy.foodLevel = 1500;
+    fuzzy.foodLevel = 1300;
     fuzzy.setHunger();
     jasmine.clock().tick(3001);
-    expect(fuzzy.foodLevel).toEqual(1494);
+    expect(fuzzy.foodLevel).toEqual(1294);
+  });
+  it('should test the food is going down by correct amount', function() {
+    fuzzy.foodLevel = 800;
+    fuzzy.setHunger();
+    jasmine.clock().tick(3001);
+    expect(fuzzy.foodLevel).toEqual(797);
   });
 });

@@ -3,7 +3,7 @@ export let bear = {
   sleepLevel: 50,
   planeParts: 0,
   setHunger: function() {
-    if(this.foodLevel < 1000) {
+    if(this.foodLevel < 500) {
       const hungerInterval = setInterval(() => {
         this.foodLevel--;
         if (this.didYouGetEaten() == true) {
@@ -11,7 +11,15 @@ export let bear = {
           return "You got eaten!";
         }
       }, 3000);
-    } else if (this.foodLevel >= 1000 && this.foodLevel < 2000) {
+    } else if (this.foodLevel >= 500 && this.foodLevel < 1000) {
+      const hungerInterval = setInterval(() => {
+        this.foodLevel--;
+        if (this.didYouGetEaten() == true) {
+          clearInterval(hungerInterval);
+          return "You got eaten!";
+        }
+      }, 1000);
+    } else if (this.foodLevel >= 1000 && this.foodLevel < 1500) {
       const hungerInterval = setInterval(() => {
         this.foodLevel--;
         if (this.didYouGetEaten() == true) {
