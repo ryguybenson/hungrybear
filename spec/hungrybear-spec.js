@@ -9,7 +9,6 @@ describe('HungryBear', function() {
     fuzzy.foodLevel = 10;
     fuzzy.sleepLevel = 30;
     fuzzy.name = "Fuzzy";
-    fuzzy.setHunger();
   });
 
   afterEach(function() {
@@ -25,7 +24,8 @@ describe('HungryBear', function() {
     expect(fuzzy.isHeSleeping()).toEqual(true);
   });
 
-  it('should have a food level of 7 after 3001 milliseconds', function() {
+  it('should have a food level of 9 after 3001 milliseconds', function() {
+    fuzzy.setHunger();
     jasmine.clock().tick(3001);
     expect(fuzzy.foodLevel).toEqual(9);
   });
@@ -66,5 +66,11 @@ describe('HungryBear', function() {
   it('should test if the plane is completed', function() {
     fuzzy.partsLevel = 5;
     expect(fuzzy.completedPlane()).toEqual(true);
-  })
+  });
+  it('should test the food is going down by correct amount', function() {
+    fuzzy.foodLevel = 1500;
+    fuzzy.setHunger();
+    jasmine.clock().tick(3001);
+    expect(fuzzy.foodLevel).toEqual(1494);
+  });
 });

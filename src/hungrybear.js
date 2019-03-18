@@ -3,13 +3,23 @@ export let bear = {
   sleepLevel: 50,
   planeParts: 0,
   setHunger: function() {
-    const hungerInterval = setInterval(() => {
-      this.foodLevel--;
-      if (this.didYouGetEaten() == true) {
-        clearInterval(hungerInterval);
-        return "You got eaten!";
-      }
-    }, 3000);
+    if(this.foodLevel < 1000) {
+      const hungerInterval = setInterval(() => {
+        this.foodLevel--;
+        if (this.didYouGetEaten() == true) {
+          clearInterval(hungerInterval);
+          return "You got eaten!";
+        }
+      }, 3000);
+    } else if (this.foodLevel >= 1000 && this.foodLevel < 2000) {
+      const hungerInterval = setInterval(() => {
+        this.foodLevel--;
+        if (this.didYouGetEaten() == true) {
+          clearInterval(hungerInterval);
+          return "You got eaten!";
+        }
+      }, 500);
+    }
   },
   setSleep: function() {
     const sleepInterval = setInterval(() => {
@@ -61,10 +71,10 @@ export let bear = {
     } else {
       return false;
     }
-  }
+  },
   // didYouReachLevelTwo: function() {
-  //   if (this.foodLevel === 1000) {
-  //     setHunger: function() {
+  //   if (this.foodLevel > 1000) {
+  //     this.setHunger: function() {
   //       const hungerInterval = setInterval(() => {
   //         this.foodLevel--;
   //         if (this.didYouGetEaten() == true) {
@@ -72,21 +82,19 @@ export let bear = {
   //           return "You got eaten!";
   //         }
   //       }, 500);
-  //     },
+  //     }
   //   }
   // },
   // didYouReachLevelThree: function() {
-  //   if (this.foodLevel === 2000) {
-  //     setHunger: function() {
-  //       const hungerInterval = setInterval(() => {
-  //         this.foodLevel--;
-  //         if (this.didYouGetEaten() == true) {
-  //           clearInterval(hungerInterval);
-  //           return "You got eaten!";
-  //         }
-  //       }, 200);
-  //     },
-  //   }
+  //   setHunger: function() {
+  //     const hungerInterval = setInterval(() => {
+  //       this.foodLevel--;
+  //       if (this.didYouGetEaten() == true) {
+  //         clearInterval(hungerInterval);
+  //         return "You got eaten!";
+  //       }
+  //     }, 3000);
+  //   },
   // }
 };
 
